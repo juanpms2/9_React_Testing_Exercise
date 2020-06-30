@@ -6,3 +6,12 @@ export interface HotelEntityVm {
   rating: number;
   address: string;
 }
+
+export const defaultEntityVm = (): HotelEntityVm => ({
+  id: '',
+  picture: '',
+  name: '',
+  description: '',
+  rating: 0,
+  address: '',
+});
