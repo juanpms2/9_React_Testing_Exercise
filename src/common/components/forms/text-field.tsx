@@ -4,7 +4,7 @@ import TextFieldMui from '@material-ui/core/TextField';
 
 interface Props extends FieldRenderProps<any, any> {}
 
-export const TextField: React.FunctionComponent<Props> = props => {
+export const TextField: React.FunctionComponent<Props> = (props) => {
   const {
     input: { name, onChange, value, ...restInput },
     meta,
