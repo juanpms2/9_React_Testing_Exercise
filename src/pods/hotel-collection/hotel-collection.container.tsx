@@ -9,10 +9,5 @@ export const HotelCollectionContainer = () => {
     loadHotelCollection();
   }, []);
 
-  return (
-    <HotelCollectionComponent
-      data-testid="container"
-      hotelCollection={hotelCollection}
-    />
-  );
+  return <HotelCollectionComponent hotelCollection={hotelCollection} />;
 };

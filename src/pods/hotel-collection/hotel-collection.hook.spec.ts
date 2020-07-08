@@ -4,9 +4,6 @@ import * as api from './hotel-collection.api';
 import { mapFromApiToVm } from './hotel-collection.mapper';
 import * as mapFunction from 'common/mappers';
 import Axios from 'axios';
-import { HotelEntityVm } from './hotel-collection.vm';
-
-// jest.mock('common/mappers', () => ({ mapToCollection: jest.fn() }));
 
 describe('hotell-collection-hook specs', () => {
   it('should return hotelCollection equals empty array and loadHotelCollection equals function', () => {
