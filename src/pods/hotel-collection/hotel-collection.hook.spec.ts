@@ -2,11 +2,11 @@ import { renderHook, act } from '@testing-library/react-hooks';
 import { useHotelCollection } from './hotel-collection.hook';
 import * as api from './hotel-collection.api';
 import { mapFromApiToVm } from './hotel-collection.mapper';
-import { mapToCollection } from 'common/mappers';
+import * as mapFunction from 'common/mappers';
 import Axios from 'axios';
 import { HotelEntityVm } from './hotel-collection.vm';
 
-jest.mock('common/mappers', () => ({ mapToCollection: jest.fn() }));
+// jest.mock('common/mappers', () => ({ mapToCollection: jest.fn() }));
 
 describe('hotell-collection-hook specs', () => {
   it('should return hotelCollection equals empty array and loadHotelCollection equals function', () => {
@@ -82,6 +82,8 @@ describe('hotell-collection-hook specs', () => {
       } as api.HotelEntityApi,
     ];
 
+    const mapToCollectionStub = jest.spyOn(mapFunction, 'mapToCollection');
+
     const getHotelCollectionStub = jest
       .spyOn(api, 'getHotelCollection')
       .mockResolvedValue(mockApiHotelCollection);
@@ -97,7 +99,7 @@ describe('hotell-collection-hook specs', () => {
 
     // Assert
     await waitForNextUpdate();
-    expect(mapToCollection).toHaveBeenCalled();
+    expect(mapToCollectionStub).toHaveBeenCalled();
   });
 
   it('Should return hotelCollection equals mapResult when loadHotelCollection is called', async () => {
@@ -125,7 +127,10 @@ describe('hotell-collection-hook specs', () => {
       .spyOn(Axios, 'get')
       .mockResolvedValue({ data: mockApiHotelCollection });
 
-    const mapResult = mapToCollection(mockApiHotelCollection, mapFromApiToVm);
+    const mapResult = mapFunction.mapToCollection(
+      mockApiHotelCollection,
+      mapFromApiToVm
+    );
 
     // Act
     const { result, waitForNextUpdate } = renderHook(() =>
