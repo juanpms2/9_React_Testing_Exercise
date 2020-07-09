@@ -22,5 +22,5 @@ interface LinkRoutes extends Omit<SwitchRoutes, 'hotelEdit'> {
 
 export const linkRoutes: LinkRoutes = {
   ...switchRoutes,
-  hotelEdit: id => generatePath(switchRoutes.hotelEdit, { id }),
+  hotelEdit: (id) => generatePath(switchRoutes.hotelEdit, { id }),
 };

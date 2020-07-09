@@ -14,6 +14,7 @@ import {
   Typography,
   CardActions,
 } from '@material-ui/core';
+import { linkRoutes } from 'core';
 
 interface Props {
   hotel: HotelEntityVm;
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 // Todo there are some harcoded styles move them to class styles
-export const HotelCard: React.FunctionComponent<Props> = props => {
+export const HotelCard: React.FunctionComponent<Props> = (props) => {
   const { hotel } = props;
   const classes = useStyles(props);
 
@@ -36,7 +37,7 @@ export const HotelCard: React.FunctionComponent<Props> = props => {
       <CardHeader
         avatar={<Avatar aria-label="Hotel">{hotel.rating}</Avatar>}
         action={
-          <IconButton>
+          <IconButton data-testid="more-button">
             <MoreVertIcon />
           </IconButton>
         }
@@ -55,6 +56,7 @@ export const HotelCard: React.FunctionComponent<Props> = props => {
             image={hotel.picture}
             title={hotel.name}
             style={{ height: 0, paddingTop: '56.25%' }}
+            data-testid="img-dataTestId"
           />
           <Typography variant="subtitle1" gutterBottom>
             {hotel.description}
@@ -62,10 +64,10 @@ export const HotelCard: React.FunctionComponent<Props> = props => {
         </div>
       </CardContent>
       <CardActions>
-        <IconButton aria-label="Add to favorites">
+        <IconButton aria-label="Edit hotel">
           <EditIcon />
         </IconButton>
-        <IconButton aria-label="Share">
+        <IconButton aria-label="Delete">
           <DeleteIcon />
         </IconButton>
       </CardActions>

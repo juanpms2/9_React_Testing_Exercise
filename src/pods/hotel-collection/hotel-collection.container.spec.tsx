@@ -2,6 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { HotelCollectionContainer } from './hotel-collection.container';
 import * as hook from './hotel-collection.hook';
+import { HotelEntityVm } from './hotel-collection.vm';
 
 describe('hotel-collection.container specs', () => {
   it('Should called hook when it mounts component', () => {
@@ -29,7 +30,7 @@ describe('hotel-collection.container specs', () => {
 
   it('Should called loadHotelCollection when useEffect is called', () => {
     // Arrange
-    const hotelCollection = [];
+    const hotelCollection: HotelEntityVm[] = [];
     const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
     const useEffectStub = jest
       .spyOn(React, 'useEffect')
