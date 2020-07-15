@@ -42,8 +42,6 @@ describe('hotell-collection-hook specs', () => {
       .spyOn(api, 'getHotelCollection')
       .mockResolvedValue(mockApiHotelCollection);
 
-    const getHotelCollection = jest.fn();
-
     // Act
     const { result, waitForNextUpdate } = renderHook(() =>
       useHotelCollection()
