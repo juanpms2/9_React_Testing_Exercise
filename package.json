@@ -9,7 +9,9 @@
     "start:mock-server": "cd ./server && npm start",
     "postinstall": "cd ./server && npm i",
     "test": "jest --verbose -c ./config/test/jest.json",
-    "test:watch": "npm test -- --watchAll -i --no-cache"
+    "test:watch": "npm test -- --watchAll -i --no-cache",
+    "pretest:coverage": "rimraf coverage",
+    "test:coverage": "jest --verbose -c ./config/test/jest.coverage.json"
   },
   "author": "Juan Pablo Martínez",
   "license": "ISC",

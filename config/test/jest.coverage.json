@@ -1,0 +1,18 @@
+{
+  "rootDir": "../../",
+  "preset": "ts-jest",
+  "restoreMocks": true,
+  "setupFilesAfterEnv": ["<rootDir>/config/test/setup-after.ts"],
+  "moduleDirectories": ["<rootDir>/src", "node_modules"],
+  "collectCoverage": true,
+  "coverageReporters": ["text", "html"],
+  "coveragePathIgnorePatterns": ["/node_modules/"],
+  "coverageThreshold": {
+    "global": {
+      "branches": 80,
+      "function": 80,
+      "lines": 90,
+      "statements": -10
+    }
+  }
+}
