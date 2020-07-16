@@ -28,7 +28,7 @@ describe('hotel-collection.container specs', () => {
     expect(useHotelCollectionStub).toHaveBeenCalled();
   });
 
-  it('Should display component when container render', async () => {
+  it('Should display component when container render', () => {
     // Arrange
 
     // Act
@@ -55,11 +55,12 @@ describe('hotel-collection.container specs', () => {
         .mockReturnValue(loadHotelCollection());
 
       // Act
-      const {} = render(<HotelCollectionContainer />);
+      const { unmount } = render(<HotelCollectionContainer />);
 
       // Assert
 
       expect(loadHotelCollection).toHaveBeenCalled();
+      unmount();
     });
   });
 });
