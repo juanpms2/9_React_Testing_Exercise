@@ -17,31 +17,27 @@ function getDefaultAdapter() {
 }
 
 describe('hotel-collection.container specs', () => {
-  describe('called hook', () => {
-    it('Should called hook when it mounts component', () => {
-      // Arrange
-      const useHotelCollectionStub = jest.spyOn(hook, 'useHotelCollection');
+  it('Should called hook when it mounts component', () => {
+    // Arrange
+    const useHotelCollectionStub = jest.spyOn(hook, 'useHotelCollection');
 
-      // Act
-      const {} = render(<HotelCollectionContainer />);
+    // Act
+    const {} = render(<HotelCollectionContainer />);
 
-      // Assert
-      expect(useHotelCollectionStub).toHaveBeenCalled();
-    });
+    // Assert
+    expect(useHotelCollectionStub).toHaveBeenCalled();
   });
 
-  describe('display component', () => {
-    it('Should display component when container render', () => {
-      // Arrange
+  it('Should display component when container render', () => {
+    // Arrange
 
-      // Act
-      const { getByTestId } = render(<HotelCollectionContainer />);
-      const element = getByTestId('div-hotel-container');
+    // Act
+    const { getByTestId } = render(<HotelCollectionContainer />);
+    const element = getByTestId('div-hotel-container');
 
-      // Assert
+    // Assert
 
-      expect(element).toBeInTheDocument();
-    });
+    expect(element).toBeInTheDocument();
   });
 
   describe('called loadHotelCollection', () => {
