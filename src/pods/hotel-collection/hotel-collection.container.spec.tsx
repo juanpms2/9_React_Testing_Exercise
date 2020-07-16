@@ -28,7 +28,7 @@ describe('hotel-collection.container specs', () => {
     expect(useHotelCollectionStub).toHaveBeenCalled();
   });
 
-  it('Should display component when container render', () => {
+  it('Should display component when container render', async () => {
     // Arrange
 
     // Act
