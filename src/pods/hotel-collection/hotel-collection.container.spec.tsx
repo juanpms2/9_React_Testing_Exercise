@@ -38,7 +38,7 @@ describe('hotel-collection.container specs', () => {
       .spyOn(Axios, 'get')
       .mockResolvedValue(hotelCollection);
     const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
-    const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
+    const loadHotelCollection = jest.fn();
     const useEffectStub = jest
       .spyOn(React, 'useEffect')
       .mockReturnValue(loadHotelCollection());
