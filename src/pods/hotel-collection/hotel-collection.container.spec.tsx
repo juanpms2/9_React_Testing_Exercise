@@ -41,7 +41,7 @@ describe('hotel-collection.container specs', () => {
   });
 
   describe('called loadHotelCollection', () => {
-    getDefaultAdapter();
+    Axios.defaults.adapter = require('axios/lib/adapters/http');
 
     it('Should called loadHotelCollection when useEffect is called', () => {
       // Arrange
