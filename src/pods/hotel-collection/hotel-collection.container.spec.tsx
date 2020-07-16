@@ -6,6 +6,16 @@ import { HotelEntityVm } from './hotel-collection.vm';
 import * as api from './hotel-collection.api';
 import Axios from 'axios';
 
+function getDefaultAdapter() {
+  if (typeof XMLHttpRequest !== 'undefined') {
+    // For browsers use XHR adapter
+    Axios.defaults.adapter = require('axios/lib/adapters/xhr');
+  } else if (typeof process !== 'undefined') {
+    // For node use HTTP adapter
+    Axios.defaults.adapter = require('axios/lib/adapters/http');
+  }
+}
+
 describe('hotel-collection.container specs', () => {
   it('Should called hook when it mounts component', () => {
     // Arrange
@@ -20,6 +30,7 @@ describe('hotel-collection.container specs', () => {
 
   it('Should display component when container render', () => {
     // Arrange
+    getDefaultAdapter();
 
     // Act
     const { getByTestId } = render(<HotelCollectionContainer />);
@@ -32,6 +43,7 @@ describe('hotel-collection.container specs', () => {
 
   it('Should called loadHotelCollection when useEffect is called', () => {
     // Arrange
+    getDefaultAdapter();
     const hotelCollection = [];
     const axiosStub = jest.spyOn(Axios, 'get');
     const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
