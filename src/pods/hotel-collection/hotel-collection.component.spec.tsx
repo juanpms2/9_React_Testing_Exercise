@@ -15,7 +15,7 @@ describe('HotelCollection Component specs', () => {
     const element = getByTestId('div-hotel-container');
 
     // Assert
-    expect(await element).toBeInTheDocument();
+    expect(element).toBeInTheDocument();
   });
   it('Should display a card with each hotel', async () => {
     // Arrange
@@ -37,6 +37,6 @@ describe('HotelCollection Component specs', () => {
     const element = getByText('test name');
 
     // Assert
-    expect(await element).toBeInTheDocument();
+    expect(element).toBeInTheDocument();
   });
 });
