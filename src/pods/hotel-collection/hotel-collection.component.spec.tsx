@@ -12,10 +12,10 @@ describe('HotelCollection Component specs', () => {
     const { getByTestId } = render(
       <HotelCollectionComponent hotelCollection={hotelCollection} />
     );
-    const element = await getByTestId('div-hotel-container');
+    const element = getByTestId('div-hotel-container');
 
     // Assert
-    expect(element).toBeInTheDocument();
+    expect(await element).toBeInTheDocument();
   });
   it('Should display a card with each hotel', async () => {
     // Arrange
@@ -34,9 +34,9 @@ describe('HotelCollection Component specs', () => {
     const { getByText } = render(
       <HotelCollectionComponent hotelCollection={hotelCollection} />
     );
-    const element = await getByText('test name');
+    const element = getByText('test name');
 
     // Assert
-    expect(element).toBeInTheDocument();
+    expect(await element).toBeInTheDocument();
   });
 });

@@ -32,9 +32,7 @@ describe('hotel-collection.container specs', () => {
   it('Should called loadHotelCollection when useEffect is called', async () => {
     // Arrange
     const hotelCollection = [];
-    const loadHotelCollection = await jest
-      .fn()
-      .mockReturnValue(hotelCollection);
+    const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
     const useEffectStub = jest
       .spyOn(React, 'useEffect')
       .mockReturnValue(loadHotelCollection());
@@ -44,6 +42,6 @@ describe('hotel-collection.container specs', () => {
 
     // Assert
 
-    expect(loadHotelCollection).toHaveBeenCalled();
+    expect(await loadHotelCollection).toHaveBeenCalled();
   });
 });
