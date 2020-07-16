@@ -28,16 +28,18 @@ describe('hotel-collection.container specs', () => {
     expect(useHotelCollectionStub).toHaveBeenCalled();
   });
 
-  it('Should display component when container render', () => {
-    // Arrange
+  describe('display component', () => {
+    it('Should display component when container render', () => {
+      // Arrange
 
-    // Act
-    const { getByTestId } = render(<HotelCollectionContainer />);
-    const element = getByTestId('div-hotel-container');
+      // Act
+      const { getByTestId } = render(<HotelCollectionContainer />);
+      const element = getByTestId('div-hotel-container');
 
-    // Assert
+      // Assert
 
-    expect(element).toBeInTheDocument();
+      expect(element).toBeInTheDocument();
+    });
   });
 
   describe('called loadHotelCollection', () => {
