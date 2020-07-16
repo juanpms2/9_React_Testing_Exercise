@@ -17,46 +17,52 @@ function getDefaultAdapter() {
 }
 
 describe('hotel-collection.container specs', () => {
-  it('Should called hook when it mounts component', () => {
-    // Arrange
-    const useHotelCollectionStub = jest.spyOn(hook, 'useHotelCollection');
+  describe('called hook', () => {
+    it('Should called hook when it mounts component', () => {
+      // Arrange
+      const useHotelCollectionStub = jest.spyOn(hook, 'useHotelCollection');
 
-    // Act
-    const {} = render(<HotelCollectionContainer />);
+      // Act
+      const {} = render(<HotelCollectionContainer />);
 
-    // Assert
-    expect(useHotelCollectionStub).toHaveBeenCalled();
+      // Assert
+      expect(useHotelCollectionStub).toHaveBeenCalled();
+    });
   });
 
-  it('Should display component when container render', () => {
-    // Arrange
-    getDefaultAdapter();
+  describe('display component', () => {
+    it('Should display component when container render', () => {
+      // Arrange
 
-    // Act
-    const { getByTestId } = render(<HotelCollectionContainer />);
-    const element = getByTestId('div-hotel-container');
+      // Act
+      const { getByTestId } = render(<HotelCollectionContainer />);
+      const element = getByTestId('div-hotel-container');
 
-    // Assert
+      // Assert
 
-    expect(element).toBeInTheDocument();
+      expect(element).toBeInTheDocument();
+    });
   });
 
-  it('Should called loadHotelCollection when useEffect is called', () => {
-    // Arrange
+  describe('called loadHotelCollection', () => {
     Axios.defaults.adapter = require('axios/lib/adapters/http');
-    const hotelCollection = [];
-    const axiosStub = jest.spyOn(Axios, 'get');
-    const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
-    const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
-    const useEffectStub = jest
-      .spyOn(React, 'useEffect')
-      .mockReturnValue(loadHotelCollection());
+    it('Should called loadHotelCollection when useEffect is called', () => {
+      // Arrange
 
-    // Act
-    const {} = render(<HotelCollectionContainer />);
+      const hotelCollection = [];
+      const axiosStub = jest.spyOn(Axios, 'get');
+      const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
+      const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
+      const useEffectStub = jest
+        .spyOn(React, 'useEffect')
+        .mockReturnValue(loadHotelCollection());
 
-    // Assert
+      // Act
+      const {} = render(<HotelCollectionContainer />);
 
-    expect(loadHotelCollection).toHaveBeenCalled();
+      // Assert
+
+      expect(loadHotelCollection).toHaveBeenCalled();
+    });
   });
 });
