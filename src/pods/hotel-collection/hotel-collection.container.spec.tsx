@@ -4,6 +4,7 @@ import { HotelCollectionContainer } from './hotel-collection.container';
 import * as hook from './hotel-collection.hook';
 import { HotelEntityVm } from './hotel-collection.vm';
 import * as api from './hotel-collection.api';
+import Axios from 'axios';
 
 describe('hotel-collection.container specs', () => {
   it('Should called hook when it mounts component', () => {
@@ -32,6 +33,7 @@ describe('hotel-collection.container specs', () => {
   it('Should called loadHotelCollection when useEffect is called', async () => {
     // Arrange
     const hotelCollection = [];
+    const axiosStub = jest.spyOn(Axios, 'get');
     const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
     const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
     const useEffectStub = jest

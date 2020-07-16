@@ -9,16 +9,15 @@ describe('HotelCollection Component specs', () => {
     const hotelCollection: HotelEntityVm[] = [];
 
     // Act
-    const { getByTestId, unmount } = render(
+    const { getByTestId } = render(
       <HotelCollectionComponent hotelCollection={hotelCollection} />
     );
     const element = getByTestId('div-hotel-container');
 
     // Assert
     expect(element).toBeInTheDocument();
-    unmount();
   });
-  it('Should display a card with each hotel', async () => {
+  it('Should display a card with each hotel', () => {
     // Arrange
     const hotelCollection: HotelEntityVm[] = [
       {
