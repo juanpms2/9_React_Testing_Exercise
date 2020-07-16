@@ -17,7 +17,7 @@ describe('HotelCollection Component specs', () => {
     // Assert
     expect(element).toBeInTheDocument();
   });
-  it('Should display a card with each hotel', () => {
+  it('Should display a card with each hotel', async () => {
     // Arrange
     const hotelCollection: HotelEntityVm[] = [
       {
@@ -34,7 +34,7 @@ describe('HotelCollection Component specs', () => {
     const { getByText } = render(
       <HotelCollectionComponent hotelCollection={hotelCollection} />
     );
-    const element = getByText('test name');
+    const element = await getByText('test name');
 
     // Assert
     expect(element).toBeInTheDocument();
