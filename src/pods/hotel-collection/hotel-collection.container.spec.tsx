@@ -43,7 +43,7 @@ describe('hotel-collection.container specs', () => {
 
   it('Should called loadHotelCollection when useEffect is called', () => {
     // Arrange
-    getDefaultAdapter();
+    Axios.defaults.adapter = require('axios/lib/adapters/http');
     const hotelCollection = [];
     const axiosStub = jest.spyOn(Axios, 'get');
     const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
