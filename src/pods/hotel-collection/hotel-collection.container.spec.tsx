@@ -5,7 +5,6 @@ import * as hook from './hotel-collection.hook';
 import { HotelEntityVm } from './hotel-collection.vm';
 import * as api from './hotel-collection.api';
 import Axios from 'axios';
-Axios.defaults.adapter = require('axios/lib/adapters/http');
 
 describe('hotel-collection.container specs', () => {
   it('Should called hook when it mounts component', () => {
@@ -19,7 +18,7 @@ describe('hotel-collection.container specs', () => {
     expect(useHotelCollectionStub).toHaveBeenCalled();
   });
 
-  it('Should display component when container render', async () => {
+  it('Should display component when container render', () => {
     // Arrange
 
     // Act
