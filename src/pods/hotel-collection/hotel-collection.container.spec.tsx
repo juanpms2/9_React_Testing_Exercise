@@ -5,6 +5,7 @@ import * as hook from './hotel-collection.hook';
 import { HotelEntityVm } from './hotel-collection.vm';
 import * as api from './hotel-collection.api';
 import Axios from 'axios';
+Axios.defaults.adapter = require('axios/lib/adapters/http');
 
 describe('hotel-collection.container specs', () => {
   it('Should called hook when it mounts component', () => {
@@ -30,7 +31,7 @@ describe('hotel-collection.container specs', () => {
     expect(element).toBeInTheDocument();
   });
 
-  it('Should called loadHotelCollection when useEffect is called', async () => {
+  it('Should called loadHotelCollection when useEffect is called', () => {
     // Arrange
     const hotelCollection = [];
     const axiosStub = jest.spyOn(Axios, 'get');
