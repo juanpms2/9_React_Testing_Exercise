@@ -40,25 +40,22 @@ describe('hotel-collection.container specs', () => {
     expect(element).toBeInTheDocument();
   });
 
-  describe('called loadHotelCollection', () => {
-    it('Should called loadHotelCollection when useEffect is called', () => {
-      // Arrange
-      Axios.defaults.adapter = require('axios/lib/adapters/http');
+  it('Should called loadHotelCollection when useEffect is called', () => {
+    // Arrange
 
-      const hotelCollection = [];
-      const axiosStub = jest.spyOn(Axios, 'get');
-      const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
-      const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
-      const useEffectStub = jest
-        .spyOn(React, 'useEffect')
-        .mockReturnValue(loadHotelCollection());
+    const hotelCollection = [];
+    const axiosStub = jest.spyOn(Axios, 'get');
+    const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
+    const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
+    const useEffectStub = jest
+      .spyOn(React, 'useEffect')
+      .mockReturnValue(loadHotelCollection());
 
-      // Act
-      const {} = render(<HotelCollectionContainer />);
+    // Act
+    const {} = render(<HotelCollectionContainer />);
 
-      // Assert
+    // Assert
 
-      expect(loadHotelCollection).toHaveBeenCalled();
-    });
+    expect(loadHotelCollection).toHaveBeenCalled();
   });
 });
