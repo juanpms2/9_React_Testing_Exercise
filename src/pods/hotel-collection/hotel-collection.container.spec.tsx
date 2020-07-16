@@ -29,11 +29,12 @@ describe('hotel-collection.container specs', () => {
     expect(element).toBeInTheDocument();
   });
 
-  it('Should called loadHotelCollection when useEffect is called', () => {
+  it('Should called loadHotelCollection when useEffect is called', async () => {
     // Arrange
     const hotelCollection = [];
-    const getHotelCollectionStub = jest.spyOn(api, 'getHotelCollection');
-    const loadHotelCollection = jest.fn().mockReturnValue(hotelCollection);
+    const loadHotelCollection = await jest
+      .fn()
+      .mockReturnValue(hotelCollection);
     const useEffectStub = jest
       .spyOn(React, 'useEffect')
       .mockReturnValue(loadHotelCollection());

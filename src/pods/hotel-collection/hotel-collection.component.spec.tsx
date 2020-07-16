@@ -4,7 +4,7 @@ import { HotelCollectionComponent } from './hotel-collection.component';
 import { HotelEntityVm } from './hotel-collection.vm';
 
 describe('HotelCollection Component specs', () => {
-  it('Should display a div container', () => {
+  it('Should display a div container', async () => {
     // Arrange
     const hotelCollection: HotelEntityVm[] = [];
 
@@ -12,7 +12,7 @@ describe('HotelCollection Component specs', () => {
     const { getByTestId } = render(
       <HotelCollectionComponent hotelCollection={hotelCollection} />
     );
-    const element = getByTestId('div-hotel-container');
+    const element = await getByTestId('div-hotel-container');
 
     // Assert
     expect(element).toBeInTheDocument();
