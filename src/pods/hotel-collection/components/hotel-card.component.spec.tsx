@@ -3,7 +3,6 @@ import { HotelCard } from './hotel-card.component';
 import { render, fireEvent } from '@testing-library/react';
 import { HotelEntityVm } from '../hotel-collection.vm';
 import { basePicturesUrl, linkRoutes } from 'core';
-import { useHistory } from 'react-router-dom';
 
 describe('Hotel Card component specs', () => {
   const props = {
