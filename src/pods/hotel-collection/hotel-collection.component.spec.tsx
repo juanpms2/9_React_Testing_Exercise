@@ -4,18 +4,19 @@ import { HotelCollectionComponent } from './hotel-collection.component';
 import { HotelEntityVm } from './hotel-collection.vm';
 
 describe('HotelCollection Component specs', () => {
-  it('Should display a div container', async () => {
+  it('Should display a div container', () => {
     // Arrange
     const hotelCollection: HotelEntityVm[] = [];
 
     // Act
-    const { getByTestId } = render(
+    const { getByTestId, unmount } = render(
       <HotelCollectionComponent hotelCollection={hotelCollection} />
     );
     const element = getByTestId('div-hotel-container');
 
     // Assert
     expect(element).toBeInTheDocument();
+    unmount();
   });
   it('Should display a card with each hotel', async () => {
     // Arrange
