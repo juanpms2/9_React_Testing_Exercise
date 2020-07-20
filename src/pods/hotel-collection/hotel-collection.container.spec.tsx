@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import { HotelCollectionContainer } from './hotel-collection.container';
 import * as hook from './hotel-collection.hook';
 import { HotelEntityVm } from './hotel-collection.vm';
-import * as api from './hotel-collection.api';
 import Axios from 'axios';
 
 jest.mock('./hotel-collection.hook', () => {
