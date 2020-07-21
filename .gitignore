@@ -6,7 +6,7 @@ typings/
 .idea/
 */src/**/*.js.map
 *.log
-package-lock.json
 coverage/
 .awcache/
 pasos.md
+cypress.md
