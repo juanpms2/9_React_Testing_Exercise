@@ -33,3 +33,7 @@ El siguiente comando nos verifica si Cypress puede correr y abre lo abre creando
   "baseUrl": "http://localhost:8080"
 }
 ```
+
+[![CircleCI](https://circleci.com/gh/juanpms2/9_React_Testing_Exercise.svg?style=svg)](https://circleci.com/gh/juanpms2/9_React_Testing_Exercise)
+
+![https://app.circleci.com/pipelines/github/juanpms2/9_React_Testing_Exercise](https://img.shields.io/cirrus/github/juanpms2/9_React_Testing_Exercise?style=plastic)
