@@ -5,7 +5,7 @@ install:
   - npm install
 script:
   - npm test
-  - npm cy:run
+  - npm run cy:run
   # after all tests finish running we need
   # to kill all background jobs (like "npm start &")
   # this avoids flake in Travis jobs
