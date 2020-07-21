@@ -5,4 +5,4 @@ install:
   - npm install
 script:
   - npm test
-  - npm cypress
+  - npm run cypress
