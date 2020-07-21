@@ -7,13 +7,15 @@
     "start": "run-p -l start:dev start:mock-server",
     "start:dev": "webpack-dev-server",
     "start:mock-server": "cd ./server && npm start",
-    "cypress": "cypress open",
-    "cy": "cypress run",
     "postinstall": "cd ./server && npm i",
     "test": "jest --verbose -c ./config/test/jest.json",
     "test:watch": "npm test -- --watchAll -i --no-cache",
     "pretest:coverage": "rimraf coverage",
-    "test:coverage": "jest --verbose -c ./config/test/jest.coverage.json"
+    "test:coverage": "jest --verbose -c ./config/test/jest.coverage.json",
+    "test:e2e": "npm-run-all -p -l start:dev start:e2e",
+    "start:e2e": "cypress open",
+    "test:e2e:ci": "npm-run-all -p -l -r start:dev run:e2e",
+    "run:e2e": "cypress run"
   },
   "author": "Juan Pablo Martínez",
   "license": "ISC",
