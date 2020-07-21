@@ -8,6 +8,7 @@
     "start:dev": "webpack-dev-server",
     "start:mock-server": "cd ./server && npm start",
     "cypress": "cypress open",
+    "cy:run": "cypress run",
     "postinstall": "cd ./server && npm i",
     "test": "jest --verbose -c ./config/test/jest.json",
     "test:watch": "npm test -- --watchAll -i --no-cache",
