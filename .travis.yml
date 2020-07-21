@@ -3,6 +3,17 @@ node_js:
   - '12.18.2'
 install:
   - npm install
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+
+cache:
+  # cache both npm modules and Cypress binary
+  directories:
+    - ~/.npm
+    - ~/.cache
+
 script:
   - npm test
   - npm run cy:run
