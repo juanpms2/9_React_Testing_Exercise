@@ -7,7 +7,6 @@
     "start": "run-p -l start:dev start:mock-server",
     "start:dev": "webpack-dev-server",
     "start:mock-server": "cd ./server && npm start",
-    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
     "cypress": "cypress open",
     "cy:run": "cypress run",
     "postinstall": "cd ./server && npm i",
