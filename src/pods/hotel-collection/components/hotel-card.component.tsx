@@ -15,6 +15,7 @@ import {
   CardActions,
 } from '@material-ui/core';
 import { linkRoutes } from 'core';
+import { useHistory } from 'react-router-dom';
 
 interface Props {
   hotel: HotelEntityVm;
@@ -31,6 +32,8 @@ const useStyles = makeStyles((theme: Theme) => ({
 export const HotelCard: React.FunctionComponent<Props> = (props) => {
   const { hotel } = props;
   const classes = useStyles(props);
+  const history = useHistory();
+  const navigateToHotel = () => history.push(linkRoutes.hotelEdit(hotel.id));
 
   return (
     <Card className={classes.card}>
@@ -64,7 +67,12 @@ export const HotelCard: React.FunctionComponent<Props> = (props) => {
         </div>
       </CardContent>
       <CardActions>
-        <IconButton aria-label="Edit hotel">
+        <IconButton
+          aria-label="Edit hotel"
+          type="button"
+          onClick={navigateToHotel}
+          data-testid="test-button-editHotel"
+        >
           <EditIcon />
         </IconButton>
         <IconButton aria-label="Delete">

@@ -22,7 +22,7 @@ interface Props {
   initialLogin: LoginEntityVm;
 }
 
-export const LoginComponent: React.FunctionComponent<Props> = props => {
+export const LoginComponent: React.FunctionComponent<Props> = (props) => {
   const classes = useStyles(props);
   const { onLogin, initialLogin } = props;
 
@@ -32,7 +32,7 @@ export const LoginComponent: React.FunctionComponent<Props> = props => {
       <CardContent>
         <div className={classes.formContainer}>
           <Form
-            onSubmit={values => onLogin(values)}
+            onSubmit={(values) => onLogin(values)}
             initialValues={initialLogin}
             render={({ handleSubmit, submitting, pristine, values }) => (
               <form onSubmit={handleSubmit} noValidate>
@@ -45,6 +45,8 @@ export const LoginComponent: React.FunctionComponent<Props> = props => {
                   validate={(value, _, meta) =>
                     formValidation.validateField(meta.name, value)
                   }
+                  autoFocus={true}
+                  data-testid="test-input-name"
                 />
                 <Field
                   fullWidth
@@ -55,6 +57,7 @@ export const LoginComponent: React.FunctionComponent<Props> = props => {
                   validate={(value, _, meta) =>
                     formValidation.validateField(meta.name, value)
                   }
+                  data-testid="test-input-password"
                 />
                 <Button type="submit" variant="contained" color="primary">
                   Login
