@@ -2,7 +2,16 @@ import * as React from 'react';
 import { HotelCard } from './hotel-card.component';
 import { render, fireEvent } from '@testing-library/react';
 import { HotelEntityVm } from '../hotel-collection.vm';
-import { basePicturesUrl, linkRoutes } from 'core';
+import { basePicturesUrl } from 'core';
+import { useHistory } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => {
+  return {
+    useHistory: jest.fn().mockReturnValue({
+      push: jest.fn(),
+    }),
+  };
+});
 
 describe('Hotel Card component specs', () => {
   const props = {
@@ -54,19 +63,18 @@ describe('Hotel Card component specs', () => {
 
   it('Should display Edit hotel button and called toDo function when button click ', () => {
     // Arrange
-    const toDo = jest.fn().mockImplementation((id) => {
-      linkRoutes.hotelEdit(id);
-    });
+
+    const navigateToHotel = jest.fn();
 
     // Act
     const { getByLabelText } = render(<HotelCard {...props} />);
     const editButton = getByLabelText('Edit hotel');
-    editButton.addEventListener('click', toDo(props.hotel.id));
+    editButton.addEventListener('click', navigateToHotel(props.hotel.id));
     fireEvent.click(editButton);
 
     // Assert
     expect(editButton).toBeInTheDocument();
-    expect(toDo).toHaveBeenCalled();
+    expect(navigateToHotel).toHaveBeenCalled();
   });
 
   it('Should display Edit hotel button and called toDo function when button click ', () => {
