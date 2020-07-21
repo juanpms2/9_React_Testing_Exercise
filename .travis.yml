@@ -21,6 +21,6 @@ install:
   - npm ci
 
 script:
-  - npm start
+  - npm start:mock-server
   - npm test
   - $(npm bin)/cypress run --record
