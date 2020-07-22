@@ -1,24 +1,4 @@
-# React Testing Exercise witch Jest and Cypress
-
-[![Build Status](https://travis-ci.com/juanpms2/9_React_Testing_Exercise.svg?branch=master)](https://travis-ci.com/juanpms2/9_React_Testing_Exercise)
-
-## Instalación de librerías
-
-En este proyecto de React instalaremos las siguientes librerías:
-
-[React Testing Library](https://github.com/testing-library/react-testing-library)
-
-`npm install @testing-library/react --save-dev`
-
-[jest-dom library](https://github.com/testing-library/jest-dom)
-
-`npm install --save-dev @testing-library/jest-dom`
-
-[react-hooks-testing-library](https://github.com/testing-library/react-hooks-testing-library)
-
-`npm install --save-dev @testing-library/react-hooks react-test-renderer`
-
----
+# Jest Unit tests | [![Build Status](https://travis-ci.com/juanpms2/9_React_Testing_Exercise.svg?branch=master)](https://travis-ci.com/juanpms2/9_React_Testing_Exercise) | [![CircleCI](https://circleci.com/gh/juanpms2/9_React_Testing_Exercise.svg?style=svg)](https://circleci.com/gh/juanpms2/9_React_Testing_Exercise/tree/master)
 
 ## Configuración Jest para typescript
 
@@ -71,68 +51,6 @@ Creamos los comandos para ejecutar los test en el package.json
 ```json
 "test": "jest --verbose -c ./config/test/jest.json",
 "test:watch": "npm test -- --watchAll -i --no-cache"
-```
-
----
-
-## Configuración de `debug` en `VSCode`
-
-Creamos el archivo de configuración para hacer debug en VSCode. En nuestro caso crearemos un sigle test, otro con --wathAll y otro para ejecutar un archivo específico de test:
-
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Jest single run",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": [
-        "-c",
-        "./config/test/jest.json",
-        "--verbose",
-        "-i",
-        "--no-cache"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Jest watch run",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": [
-        "-c",
-        "./config/test/jest.json",
-        "--verbose",
-        "-i",
-        "--no-cache",
-        "--watchAll"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Jest selected file",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "args": [
-        "${fileBasenameNoExtension}",
-        "-c",
-        "./config/test/jest.json",
-        "--verbose",
-        "-i",
-        "--no-cache",
-        "--watchAll"
-      ],
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    }
-  ]
-}
 ```
 
 ---
@@ -611,7 +529,16 @@ import * as React from 'react';
 import { HotelCard } from './hotel-card.component';
 import { render, fireEvent } from '@testing-library/react';
 import { HotelEntityVm } from '../hotel-collection.vm';
-import { basePicturesUrl, linkRoutes } from 'core';
+import { basePicturesUrl } from 'core';
+import { useHistory } from 'react-router-dom';
+
+jest.mock('react-router-dom', () => {
+  return {
+    useHistory: jest.fn().mockReturnValue({
+      push: jest.fn(),
+    }),
+  };
+});
 
 describe('Hotel Card component specs', () => {
   const props = {
@@ -663,19 +590,18 @@ describe('Hotel Card component specs', () => {
 
   it('Should display Edit hotel button and called toDo function when button click ', () => {
     // Arrange
-    const toDo = jest.fn().mockImplementation((id) => {
-      linkRoutes.hotelEdit(id);
-    });
+
+    const navigateToHotel = jest.fn();
 
     // Act
     const { getByLabelText } = render(<HotelCard {...props} />);
     const editButton = getByLabelText('Edit hotel');
-    editButton.addEventListener('click', toDo(props.hotel.id));
+    editButton.addEventListener('click', navigateToHotel(props.hotel.id));
     fireEvent.click(editButton);
 
     // Assert
     expect(editButton).toBeInTheDocument();
-    expect(toDo).toHaveBeenCalled();
+    expect(navigateToHotel).toHaveBeenCalled();
   });
 
   it('Should display Edit hotel button and called toDo function when button click ', () => {
