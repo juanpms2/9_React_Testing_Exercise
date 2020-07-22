@@ -8,7 +8,7 @@ _Para la integración continua es necesario subir al repositorio `package-lock.j
 
 #### Verificamos y arrancamos Cypress
 
-El siguiente comando nos verifica si Cypress puede correr y abre lo abre creando una carpeta en el raiz y nos abre una estancia de cypress en el navegador.
+El siguiente comando nos verifica si Cypress puede correr, lo abre creando una carpeta en el raiz y nos abre una estancia de cypress en el navegador.
 
 `node_modules/.bin/cypress open`
 
@@ -41,7 +41,7 @@ El siguiente comando nos verifica si Cypress puede correr y abre lo abre creando
 }
 ```
 
-Al arrancar Cypress por primera vez nos pide una serie de pasos y seguido nos crea en el raíz una carpeta con su mismo nombre. Dentro de ella tenemos otra llamada `integration` donde crearemos nuestros tests, otra llamada `fixtures` donde crearemos los mocks de datos y llamada `support` donde crearemos nuestros comandos personalizados.
+Al arrancar Cypress por primera vez nos pide una serie de pasos y seguido nos crea en el raíz una carpeta con su mismo nombre. Dentro de ella tenemos otra llamada `integration` donde crearemos nuestros tests, otra llamada `fixtures` donde crearemos los mocks de datos y otra llamada `support` donde crearemos nuestros comandos personalizados.
 
 Para la integración continua se ha utilizado CircleCI que debemos conectar con nuestro repositorio de GitHub. En el directorio raíz crearemos la carpeta `.circleci` y dentro el archivo de configuración `config.yml`.
 
